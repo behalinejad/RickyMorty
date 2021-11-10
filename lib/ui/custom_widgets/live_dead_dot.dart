@@ -5,7 +5,7 @@ class LiveDeadUnknown extends StatelessWidget {
   final LiveState liveState;
   LiveDeadUnknown({Key? key,required this.liveState}) : super(key: key);
 
-  // This is a dot Icon to show the node is Connected
+  // This is a dot Icon and a text  to show the character is Dead , Alive or Unknown
   @override
   Widget build(BuildContext context) {
     return Row(

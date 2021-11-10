@@ -16,7 +16,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   late RickyMorty _currentRickyMorty ;
-  int _currentPage = 1 ;
+  int _currentPage = 1 ;  //to control the current page for pagination
   String _currentSearchStr = '';
   List<Results> _currentResults = [];
   final RefreshController refreshController = RefreshController();
@@ -26,7 +26,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     final  rickyMortyBloc = BlocProvider.of<RickyMortyBloc>(context);
     if (_currentResults.isEmpty){
-      rickyMortyBloc.add(FetchRickyMorty('', 0));
+      rickyMortyBloc.add(FetchRickyMorty('', 0)); // load First result to display
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,10 +35,9 @@ class _SearchPageState extends State<SearchPage> {
         Padding(
           padding: const EdgeInsets.only(top: 15,bottom: 15,left: 16,right: 16),
           child: TextField(
-            onChanged: (value){
+            onChanged: (value){  // the search process triggers onChange of the search TextField
               if (value.trim().length > 0 ) {
                 _currentPage = 1 ;
-
                 _currentResults = [] ;
                 _currentSearchStr = value.trim();
                 rickyMortyBloc.add(FetchRickyMorty(value.trim(), _currentPage));
@@ -59,7 +58,7 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
         ),
-        BlocBuilder<RickyMortyBloc,RickyMortyState>(
+        BlocBuilder<RickyMortyBloc,RickyMortyState>( // the part that need to rebuild by bloc state management
             builder: (context,state) {
          // Build the UI for different state
               if (state is RickyMortyIsNotSearched) {
@@ -71,7 +70,7 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                 );
               }
-              else if (state is RickyMortyIsLoading){
+              else if (state is RickyMortyIsLoading){ // showing Circular Progress indicator while bloc is on isLoading state
                 if (!_isPagination)
                   return  Center(
                   child: Row(
@@ -83,7 +82,7 @@ class _SearchPageState extends State<SearchPage> {
                     ],
                   ),
                 )  ;
-              }else if (state is RickyMortyIsLoaded){
+              }else if (state is RickyMortyIsLoaded){  // while bloc is on isLoaded state and api has responded .
                _currentRickyMorty =  state.getRickyMort;
                if (_isPagination){
                  _currentResults.addAll(_currentRickyMorty.results) ;
@@ -102,13 +101,13 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget _customListView(List<Results> currentResults) {
+  Widget _customListView(List<Results> currentResults) { // The List view that display Results
     return Expanded(
-      child: SmartRefresher(
+      child: SmartRefresher( // pagination  pull to refresh Widget
         controller: refreshController,
         enablePullUp: true,
         enablePullDown: false,
-        onLoading: (){
+        onLoading: (){ // while the user reaches the end of the listView
 
           _isPagination = true ;
           _currentPage ++;

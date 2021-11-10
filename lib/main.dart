@@ -15,8 +15,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.black,
-        //scaffoldBackgroundColor : Color.fromRGBO(23, 23, 23, 0.8),
-       // accentColor: Colors.black12,
         fontFamily: 'Georgia',
         textTheme: TextTheme(
           headline1: TextStyle(fontSize: 50 , fontWeight: FontWeight.bold,color: Colors.white),

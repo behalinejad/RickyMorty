@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_bloc: ^7.0.1
   dio: ^4.0.1
-  bloc_test: ^8.0.2
+  bloc_test: ^8.5.0
   test: ^1.15.10
   equatable: ^2.0.3
   pull_to_refresh: ^2.0.0

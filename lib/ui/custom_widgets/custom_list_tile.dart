@@ -21,7 +21,7 @@ class CustomListTile  extends StatelessWidget {
           children: [
           Image.network(result.image,
           errorBuilder: ( context,  exception,  stackTrace) {
-          return Image.asset('not_found.jpg') ;
+          return Image.asset('not_found.jpg') ; //in the case of error to load Image throw network the not_found Image will be appear
           }),
           Padding(
             padding: const EdgeInsets.only(left: 20,bottom: 5),

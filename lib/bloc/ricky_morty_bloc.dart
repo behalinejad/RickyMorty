@@ -15,15 +15,15 @@ class FetchRickyMorty extends RickyMortyEvent {
   FetchRickyMorty(this._name, this._page);
 
 @override
-
-  List<Object?> get props => [_name,_page];
+  List<Object?> get props => [this._name,this._page];
 }
 
 class ResetRickyMorty extends RickyMortyEvent {}
 
 class RickyMortyState extends Equatable {
-  @override
 
+
+  @override
   List<Object?> get props => [];
 }
 
@@ -38,9 +38,11 @@ class RickyMortyIsLoaded extends RickyMortyState{
  final  _rickyMorty ;
   RickyMortyIsLoaded(this._rickyMorty);
 
+
   RickyMorty get getRickyMort => _rickyMorty;
+
   @override
-  List<Object?> get props => [_rickyMorty];
+  List<Object?> get props => [this._rickyMorty];
 }
 
 
@@ -63,8 +65,8 @@ class RickyMortyBloc extends Bloc<RickyMortyEvent,RickyMortyState>{
       }catch(_){
         yield RickyMortyIsNotLoaded();
       }
-    }else if (event is ResetRickyMorty){
-      yield RickyMortyIsNotSearched();
+      }else if (event is ResetRickyMorty){
+         yield RickyMortyIsNotSearched();
     }
   }
 }
