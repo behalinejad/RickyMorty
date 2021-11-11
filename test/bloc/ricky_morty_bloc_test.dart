@@ -22,6 +22,7 @@ void main (){
    });
 
 
+
     blocTest<RickyMortyBloc,RickyMortyState>(
       'bloc state should continue in IsLoading and end in IsLoaded State ',
       build: () => RickyMortyBloc(RickyMortyRepo()),
