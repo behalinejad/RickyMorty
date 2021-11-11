@@ -29,37 +29,42 @@ class CustomListTile  extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Text(result.name),
+                 Container(
+                     width:MediaQuery.of(context).size.width/1.9 ,
+                     child: Text(result.name,overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.bodyText2,)),
                  SizedBox(height: 2,),
                 LiveDeadUnknown(liveState: result.status == 'Alive' ? LiveState.Alive : result.status == 'Dead' ? LiveState.Dead : LiveState.Unknown ),
                 SizedBox(height: 20,),
-                Row(    // Rows for Species and Gender
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(   // Species column
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Species:',style: Theme.of(context).textTheme.caption,),
-                        SizedBox(height: 2,),
-                        Text(result.species,style: Theme.of(context).textTheme.bodyText1,)
-                      ],
+                Container(
+                  width: MediaQuery.of(context).size.width/ 2,
+                  child: Row(    // Rows for Species and Gender
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(   // Species column
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Species:',style: Theme.of(context).textTheme.caption,),
+                          SizedBox(height: 2,),
+                          Text(result.species,overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.bodyText1,)
+                        ],
 
-                    ),
-                    SizedBox(width: MediaQuery.of(context).size.width/ 4,),
-                    Column(   // Gender  column
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Gender:',style: Theme.of(context).textTheme.caption,),
-                        SizedBox(height: 2,),
-                        Text(result.gender,style: Theme.of(context).textTheme.bodyText1,)
-                      ],
+                      ),
 
-                    ),
+                      Column(   // Gender  column
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Gender:',style: Theme.of(context).textTheme.caption,),
+                          SizedBox(height: 2,),
+                          Text(result.gender,style: Theme.of(context).textTheme.bodyText1,)
+                        ],
 
-                  ],
+                      ),
+
+                    ],
+                  ),
                 )
               ],
             ),

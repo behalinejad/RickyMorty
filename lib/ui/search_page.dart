@@ -21,13 +21,20 @@ class _SearchPageState extends State<SearchPage> {
   List<Results> _currentResults = [];
   final RefreshController refreshController = RefreshController();
   bool _isPagination = false;
-
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     final  rickyMortyBloc = BlocProvider.of<RickyMortyBloc>(context);
     if (_currentResults.isEmpty){
       rickyMortyBloc.add(FetchRickyMorty('', 0)); // load First result to display
     }
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    final  rickyMortyBloc = BlocProvider.of<RickyMortyBloc>(context);
+    /*if (_currentResults.isEmpty){
+      rickyMortyBloc.add(FetchRickyMorty('', 0)); // load First result to display
+    }*/
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,

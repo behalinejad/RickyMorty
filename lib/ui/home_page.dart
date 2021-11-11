@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         title: Text(widget.title,
 
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.headline3,
           ),
       ),
       body: BlocProvider(
