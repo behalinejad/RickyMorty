@@ -8,7 +8,7 @@ class RickyMortyEvent extends Equatable{
   List<Object?> get props => [];
 }
 
-// The Events of Bloc
+/// The Events of Bloc
 class FetchRickyMorty extends RickyMortyEvent {
   final _name ;
   final _page ;
@@ -27,7 +27,7 @@ class RickyMortyState extends Equatable {
   List<Object?> get props => [];
 }
 
-// The States Of bloc
+/// The States Of bloc
 class RickyMortyIsNotSearched extends RickyMortyState{}
 
 
