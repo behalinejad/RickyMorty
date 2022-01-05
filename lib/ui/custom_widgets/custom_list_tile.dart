@@ -14,9 +14,9 @@ class CustomListTile  extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
-      child: InkWell(   // to act like a Button while tapping on
+      child: InkWell(                         /// to act like a Button while tapping on
         onTap: () async {
-           await Navigator.push(  // Navigate to the detail page
+           await Navigator.push(  
             context,
             MaterialPageRoute(builder: (context) {
               return ShowResultDetailPage(result: this.result,);
@@ -32,7 +32,7 @@ class CustomListTile  extends StatelessWidget {
             children: [
             Image.network(result.image,
             errorBuilder: ( context,  exception,  stackTrace) {
-            return Image.asset('not_found.jpg') ; //in the case of error to load Image throw network the not_found Image will be appear
+            return Image.asset('not_found.jpg') ; ///in the case of error to load Image throw network the not_found Image will be appear
             }),
             Padding(
               padding: const EdgeInsets.only(left: 20,bottom: 5),
